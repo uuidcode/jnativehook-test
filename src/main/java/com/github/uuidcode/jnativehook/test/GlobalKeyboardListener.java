@@ -10,7 +10,7 @@ import org.jnativehook.keyboard.NativeKeyListener;
 public class GlobalKeyboardListener implements NativeKeyListener {
     private Robot robot;
 
-    GlobalKeyboardListener() {
+    public GlobalKeyboardListener() {
         try {
             this.robot = new Robot();
         } catch (Throwable t) {
@@ -18,11 +18,9 @@ public class GlobalKeyboardListener implements NativeKeyListener {
     }
 
     public void nativeKeyTyped(NativeKeyEvent nativeKeyEvent) {
-
     }
 
     public void nativeKeyPressed(NativeKeyEvent nativeKeyEvent) {
-
     }
 
     public void nativeKeyReleased(NativeKeyEvent nativeKeyEvent) {
