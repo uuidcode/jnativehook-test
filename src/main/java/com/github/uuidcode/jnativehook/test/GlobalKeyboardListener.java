@@ -1,7 +1,9 @@
 package com.github.uuidcode.jnativehook.test;
 
+import static java.awt.event.KeyEvent.VK_ALT;
+import static java.awt.event.KeyEvent.VK_TAB;
+
 import java.awt.Robot;
-import java.awt.event.KeyEvent;
 
 import org.jnativehook.GlobalScreen;
 import org.jnativehook.keyboard.NativeKeyEvent;
@@ -25,12 +27,19 @@ public class GlobalKeyboardListener implements NativeKeyListener {
 
     public void nativeKeyReleased(NativeKeyEvent nativeKeyEvent) {
         if (nativeKeyEvent.getKeyCode() == 2) {
-            this.robot.keyPress(KeyEvent.VK_ALT);
-            this.robot.keyPress(KeyEvent.VK_TAB);
-
-            this.robot.keyRelease(KeyEvent.VK_TAB);
-            this.robot.keyRelease(KeyEvent.VK_ALT);
+            this.altTab();
         }
+    }
+
+    public void altTab() {
+        this.typeKeys(VK_ALT, VK_TAB);
+    }
+
+    public void typeKeys(int key1, int key2) {
+        this.robot.keyPress(key1);
+        this.robot.keyPress(key2);
+        this.robot.keyRelease(key2);
+        this.robot.keyRelease(key1);
     }
 
     public static void main(String[] args) throws Exception {
